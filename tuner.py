@@ -35,8 +35,8 @@ def get_dominant_frequency(freqs,amps):
     new_freqs=new_freqs[new_freqs>(base/4)]
 
     temp=(new_freqs%base)/base
-    harm_index=np.squeeze(np.argwhere(np.logical_or(temp>0.88,temp<0.12))) #change values of temp, or look at weighting based on amplitude
-    new_freqs=np.delete(new_freqs,harm_index)                              #or experiment with changing line 54
+    harm_index=np.squeeze(np.argwhere(np.logical_or(temp>0.88,temp<0.12))) 
+    new_freqs=np.delete(new_freqs,harm_index)                              
     amps=np.delete(amps,harm_index)
 
     base=find_base(base,new_freqs,amps)
@@ -55,7 +55,7 @@ def find_frequency(fft_result):
     f=f[fft_freq>=20]
     fft_freq=fft_freq[fft_freq>=20]
 
-    notable_power=np.max(f)/8    #8
+    notable_power=np.max(f)/8    
     f[f<notable_power]=0
 
     #frequency of signal is the first local maximum point
@@ -95,7 +95,7 @@ def get_note(freq,a4):
 
 def sample_to_output(sample,a4=440):
     pyfftw.interfaces.cache.enable()
-    fft_data=pyfftw.interfaces.numpy_fft.rfft(sample,64*len(sample)) #4
+    fft_data=pyfftw.interfaces.numpy_fft.rfft(sample,64*len(sample)) 
     freq=find_frequency(fft_data)
     note, cents_away = get_note(freq,a4)
     return freq, note, cents_away
@@ -143,7 +143,7 @@ matplotlib.use("TkAgg")
 
 # Setup channel info
 device_info=sd.query_devices(sd.default.device,'input')
-FORMAT = pyaudio.paFloat32 #pyaudio.paInt16 # data type formate
+FORMAT = pyaudio.paFloat32 #pyaudio.paInt16 # data type format
 CHANNELS = 1
 RATE = int(device_info['default_samplerate']) 
 CHUNK = 2**13 # Block Size (2 bytes per sample i.e. \x01\x00)
