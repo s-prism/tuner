@@ -13,7 +13,7 @@ python tuner.py
 
 ## What the tuner does
 
-If you play a sound with an instrument, the tuner identifies the closest musical note to this sound. It then displays whether the sound played is a higher or lower pitch than the musical note, and how much the player is out of tune by (measured in cents). 
+If the user plays a sound with an instrument, the tuner identifies the closest musical note to this sound. It then displays whether the sound played is a higher or lower pitch than the musical note, and how much the user is out of tune by (measured in cents). 
 
 ## Additional features
 
